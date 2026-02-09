@@ -10,8 +10,7 @@ import java.util.List;
 @Service
 public class EmpresaService {
 
-    final
-    EmpresaRepository empresaRepository;
+    final EmpresaRepository empresaRepository;
 
     public EmpresaService(EmpresaRepository empresaRepository){
         this.empresaRepository = empresaRepository;
