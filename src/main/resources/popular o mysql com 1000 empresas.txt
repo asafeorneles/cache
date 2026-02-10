@@ -1,0 +1,34 @@
+-- 1. Cria a tabela (caso não exista)
+CREATE TABLE IF NOT EXISTS empresa (
+    id INT PRIMARY KEY,
+    nome VARCHAR(20)
+);
+
+-- 2. Define o delimitador para a procedure
+DELIMITER //
+
+DROP PROCEDURE IF EXISTS populaDB_998 //
+
+CREATE PROCEDURE populaDB_1000()
+BEGIN
+    DECLARE cont INT DEFAULT 1;
+    DECLARE registros INT DEFAULT 0;
+
+    SELECT COUNT(*) INTO registros FROM empresa;
+
+    -- Só insere se a tabela estiver vazia
+    IF registros = 0 THEN
+        START TRANSACTION;
+        WHILE cont <= 1000 DO
+            INSERT INTO empresa (id, nome)
+            VALUES (cont, CONCAT('Empresa ', cont));
+            SET cont = cont + 1;
+        END WHILE;
+        COMMIT;
+    END IF;
+END //
+
+DELIMITER ;
+
+-- 3. Chama a procedure
+CALL populaDB_1000();
