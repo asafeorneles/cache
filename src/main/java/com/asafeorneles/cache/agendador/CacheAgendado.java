@@ -1,5 +1,6 @@
 package com.asafeorneles.cache.agendador;
 
+import com.asafeorneles.cache.service.CacheService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -12,9 +13,21 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class CacheAgendado {
 
-    @Scheduled(fixedDelay =  12, timeUnit = TimeUnit.SECONDS)
+    final CacheService cacheService;
+
+    public CacheAgendado(CacheService cacheService) {
+        this.cacheService = cacheService;
+    }
+
+    @Scheduled(fixedDelay =  25, timeUnit = TimeUnit.SECONDS)
     @CacheEvict("empresas")
     public void clearCacheByTime(){
         log.info("Limpando o cache de empresas {}", LocalDateTime.now());
     }
+
+//    @Scheduled(fixedDelay =  25, timeUnit = TimeUnit.SECONDS)
+//    public void atualizarCacheByTime(){
+//        cacheService.atualizarCacheEmpresas();
+//        log.info("Atualizando o cache de empresas {}", LocalDateTime.now());
+//    }
 }
