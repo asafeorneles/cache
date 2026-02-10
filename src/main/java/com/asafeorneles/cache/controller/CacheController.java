@@ -1,10 +1,10 @@
 package com.asafeorneles.cache.controller;
 
+import com.asafeorneles.cache.entities.Empresa;
 import com.asafeorneles.cache.service.CacheService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/cache")
@@ -19,5 +19,10 @@ public class CacheController {
     @PostMapping
     public void clear (@RequestParam String cacheName){
         cacheService.evictAllCacheValues(cacheName);
+    }
+
+    @PutMapping
+    public List<Empresa> atualizarCacheDeEmpresas(){
+        return cacheService.atualizarCacheEmpresas();
     }
 }
