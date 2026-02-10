@@ -22,7 +22,7 @@ public class EmpresaController {
 
     @GetMapping
     public ResponseEntity<List<Empresa>> findAll(){
-        List<Empresa> all = empresaService.findAll();
+        List<Empresa> all = empresaService.findAllComCache();
         return ResponseEntity.ok(all);
     }
 }
