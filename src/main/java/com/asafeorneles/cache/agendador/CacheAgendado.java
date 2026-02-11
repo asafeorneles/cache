@@ -19,11 +19,11 @@ public class CacheAgendado {
         this.cacheService = cacheService;
     }
 
-    @Scheduled(fixedDelay =  25, timeUnit = TimeUnit.SECONDS)
-    @CacheEvict("empresas")
-    public void clearCacheByTime(){
-        log.info("Limpando o cache de empresas {}", LocalDateTime.now());
-    }
+//    @Scheduled(fixedDelay =  25, timeUnit = TimeUnit.SECONDS)
+//    @CacheEvict("empresas")
+//    public void clearCacheByTime(){
+//        log.info("Limpando o cache de empresas {}", LocalDateTime.now());
+//    }
 
 //    @Scheduled(fixedDelay =  25, timeUnit = TimeUnit.SECONDS)
 //    public void atualizarCacheByTime(){
