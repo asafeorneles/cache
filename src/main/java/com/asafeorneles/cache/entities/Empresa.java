@@ -7,13 +7,15 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 @Entity
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class Empresa {
+public class Empresa implements Serializable {
 
     @Id
     private Long id;
